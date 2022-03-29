@@ -1,0 +1,324 @@
+version: "2.0"
+
+stories:
+  # Start - GET ALL CASES FLOW
+
+  - story: get all cases
+    steps:
+      - intent: get_all_cases
+      - action: action_fetch_all_cases
+      - action: utter_find_all_cases
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - GET ALL CASES FLOW
+
+  # Start - HEARING DATE FLOW
+
+  - story: get hearing date when user provides case_number
+    steps:
+      - intent: get_hearing_date
+        entities:
+          - case_number: "123456789"
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_hearing_date
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  - story: get hearing date when user doesn't provide case number
+    steps:
+      - intent: get_hearing_date
+      - action: action_fetch_next_hearing_date
+      - action: upcoming_hearing_date_form
+      - active_loop: upcoming_hearing_date_form
+      - active_loop: null
+      - action: action_fetch_hearing_date
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - HEARING DATE FLOW
+
+  # Start - CASE INFORMATION FLOW
+
+  - story: get case information
+    steps:
+      - intent: get_case_information
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_case_information
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  - story: get case information
+    steps:
+      - intent: get_case_information
+        entities:
+          - case_number: "123456789"
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_case_information
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - CASE INFORMATION FLOW
+
+  # Start - CASE CHARGES FLOW
+
+  - story: get case charges
+    steps:
+      - intent: get_charges
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_charges
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  - story: get case charges
+    steps:
+      - intent: get_charges
+        entities:
+          - case_number: "123456789"
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_charges
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - CASE CHARGES FLOW
+
+  # Start - CASE PARTIES FLOW
+
+  - story: get case parties
+    steps:
+      - intent: get_parties
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_parties
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  - story: get case parties
+    steps:
+      - intent: get_parties
+        entities:
+          - case_number: "123456789"
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_parties
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - CASE PARTIES FLOW
+
+  # Start - CASE PAYMENT FLOW
+
+  - story: get case payment
+    steps:
+      - intent: get_payment
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_payment
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  - story: get case payment
+    steps:
+      - intent: get_payment
+        entities:
+          - case_number: "123456789"
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_payment
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - CASE PAYMENT FLOW
+
+  # Start - CASE FILE UPLOAD FLOW
+
+  - story: get file upload information
+    steps:
+      - intent: get_file_upload_information
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_file_upload_information
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  - story: get file upload information
+    steps:
+      - intent: get_file_upload_information
+        entities:
+          - case_number: "123456789"
+      - action: case_form
+      - active_loop: case_form
+      - active_loop: null
+      - action: action_fetch_file_upload_information
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - CASE FILE UPLOAD FLOW
+
+  # Start - CHANGE USERNAME FLOW
+
+  - story: provide instructions to change username
+    steps:
+      - intent: change_username
+      - action: action_direct_users_to_change_username
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - CHANGE USERNAME FLOW
+
+  # Start - UPDATE NOTIFICATION SETTINGS
+
+  - story: provide instructions to change notification settings
+    steps:
+      - intent: update_notification
+      - action: action_direct_users_to_update_notification
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - UPDATE NOTIFICATION SETTINGS
+
+  # Start - CHANGE PASSWORD FLOW
+
+  - story: provide instructions to change password
+    steps:
+      - intent: change_password
+      - action: action_direct_users_to_change_password
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - CHANGE PASSWORD FLOW
+
+  # Start - EVICTION RELATED STORIES
+
+  - story: eviction - eviction generalized flow
+    steps:
+      - intent: evict
+      - action: action_provide_eviction_summary
+      - action: utter_eviction_popular_questions
+
+  - story: eviction - evict someone
+    steps:
+      - intent: evict_someone
+      - action: action_provide_eviction_procedure
+      - action: utter_more_eviction_related_question
+      - checkpoint: check_stay_in_eviction_flow
+
+  - story: eviction - received eviction
+    steps:
+      - intent: process_eviction
+      - action: action_process_eviction
+      - action: utter_more_eviction_related_question
+      - checkpoint: check_stay_in_eviction_flow
+
+  - story: eviction - retrieving belongings
+    steps:
+      - intent: retrieve_belongings
+      - action: action_retrieve_belongings
+      - action: utter_more_eviction_related_question
+      - checkpoint: check_stay_in_eviction_flow
+
+  - story: eviction - landlord not accepting rent
+    steps:
+      - intent: handle_rent_rejection
+      - action: action_process_rent_rejection
+      - action: utter_more_eviction_related_question
+      - checkpoint: check_stay_in_eviction_flow
+
+  - story: eviction - get deposit back
+    steps:
+      - intent: retrieve_deposit
+      - action: action_retrieve_deposit
+      - action: utter_more_eviction_related_question
+      - checkpoint: check_stay_in_eviction_flow
+
+  - story: eviction - evict commercial tenant
+    steps:
+      - intent: evict_commercial_tenant
+      - action: action_provide_commercial_eviction_procedure
+      - action: utter_more_eviction_related_question
+      - checkpoint: check_stay_in_eviction_flow
+
+  # End - EVICTION RELATED STORIES
+
+  # Start - MISSING HEARING NOTICE FLOW
+
+  - story: provide help link when user didn't receive hearing notice
+    steps:
+      - intent: handle_missed_hearing_notice
+      - action: action_process_missed_hearing_notice
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - MISSING HEARING NOTICE FLOW
+
+  # Start - LOST CONNECTION DURING HEARING FLOW
+
+  - story: provide help link when user lost connection during a hearing
+    steps:
+      - intent: handle_lost_connection_during_hearing
+      - action: action_process_lost_connection_during_hearing
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - LOST CONNECTION DURING HEARING FLOW
+
+  # Start - Checkpoints
+
+  - story: checkpoint - user requires help
+    steps:
+      - checkpoint: check_require_help
+      - intent: affirm
+      - action: utter_popular_questions
+
+  - story: checkpoint - user does not require help
+    steps:
+      - checkpoint: check_require_help
+      - intent: deny
+      - action: utter_check_user_satisfaction
+      - checkpoint: check_user_satisfaction
+
+  - story: checkpoint - check user satisfaction
+    steps:
+      - checkpoint: check_user_satisfaction
+      - intent: affirm
+      - action: utter_goodbye
+      - action: action_restart
+
+  - story: checkpoint - check user satisfaction and save feedback
+    steps:
+      - checkpoint: check_user_satisfaction
+      - intent: deny
+      - action: feedback_form
+      - active_loop: feedback_form
+
+  # Eviction related checkpoints
+
+  - story: checkpoint - user chose to stay in eviction flow
+    steps:
+      - checkpoint: check_stay_in_eviction_flow
+      - intent: affirm
+      - action: utter_eviction_popular_questions
+
+  - story: checkpoint - user chose to stay in eviction flow
+    steps:
+      - checkpoint: check_stay_in_eviction_flow
+      - intent: deny
+      - action: utter_offer_help
+      - checkpoint: check_require_help
+
+  # End - Checkpoints

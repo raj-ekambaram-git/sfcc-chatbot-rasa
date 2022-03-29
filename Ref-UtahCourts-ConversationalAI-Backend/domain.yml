@@ -1,0 +1,408 @@
+version: "2.0"
+
+intents:
+  - welcome
+  - greet
+  - goodbye
+  - thankyou
+  - get_all_cases
+  - get_hearing_date
+  - get_case_information
+  - get_charges
+  - get_parties
+  - get_file_upload_information
+  - provide_case_number
+  - provide_case_details
+  - get_payment
+  - change_username
+  - change_password
+  - update_notification
+  - evict
+  - evict_someone
+  - process_eviction
+  - retrieve_belongings
+  - handle_rent_rejection
+  - retrieve_deposit
+  - evict_commercial_tenant
+  - handle_missed_hearing_notice
+  - handle_lost_connection_during_hearing
+  - ask_help
+  - affirm
+  - deny
+  - chitchat
+  - stop
+
+entities:
+  - case_number
+  - court_type
+  - location_code
+
+slots:
+  user_name:
+    type: text
+    influence_conversation: false
+  case_number:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+  court_type:
+    type: text
+    influence_conversation: false
+  location_code:
+    type: text
+    influence_conversation: false
+  feedback:
+    type: text
+    auto_fill: false
+    influence_conversation: false
+  know_case_number:
+    type: bool
+    influence_conversation: false
+  reenter_case_number:
+    type: bool
+    influence_conversation: false
+  view_upcoming_hearing_dates:
+    type: bool
+    influence_conversation: false
+
+forms:
+  feedback_form:
+    required_slots: {}
+  case_form:
+    required_slots:
+      know_case_number:
+        - type: from_intent
+          value: True
+          intent: affirm
+        - type: from_intent
+          value: False
+          intent: deny
+      case_number:
+        - type: from_entity
+          entity: case_number
+  upcoming_hearing_date_form:
+    required_slots:
+      view_upcoming_hearing_dates:
+        - type: from_intent
+          value: True
+          intent: affirm
+        - type: from_intent
+          value: False
+          intent: deny
+      case_number:
+        - type: from_entity
+          entity: case_number
+
+responses:
+  utter_greet_user:
+    - text: "Hi **{user_name}**"
+    - text: "Hey **{user_name}**"
+    - text: "Hello **{user_name}**"
+  utter_goodbye:
+    - text: "Great! Thank you for chatting, I'll be right here if you need anything."
+  utter_ask_know_case_number:
+    - text: "Do you know your case number?"
+      quick_replies:
+        [
+          { "content_type": "text", "title": "Yes", "payload": "/affirm" },
+          { "content_type": "text", "title": "No", "payload": "/deny" },
+        ]
+  utter_know_case_number:
+    - text: "Do you know your case number?"
+      quick_replies:
+        [
+          { "content_type": "text", "title": "Yes", "payload": "/affirm" },
+          { "content_type": "text", "title": "No", "payload": "/deny" },
+        ]
+  utter_ask_reenter_case_number:
+    - text: "Do you want to re-enter the case number?"
+      quick_replies:
+        [
+          { "content_type": "text", "title": "Yes", "payload": "/affirm" },
+          { "content_type": "text", "title": "No", "payload": "/deny" },
+        ]
+  utter_enter_case_number:
+    - text: "Please enter your case number."
+  utter_welcome_user:
+    - text: "Hi **{user_name}**. I'm *COURTney*, here to assist. Is there anything I could help you with today?"
+  utter_select_case:
+    - text: "Which case are you interested in?"
+  utter_same_case_number:
+    - text: "You have multiple cases with the same case number. Which case are you interested in?"
+  utter_case_number_mismatch:
+    - text: "The case number you entered does not match any cases in your file."
+  utter_directions_for_case_number:
+    - text: "You can find the case number in MyCase by looking at the left side of your MyCase screen"
+  utter_no_cases:
+    - text: "N/A, You have no cases on file."
+  utter_find_all_cases:
+    - text: 'All cases in MyCase can be accessed from the dropdown located near the top left side of your MyCase page. Just below "My Case" and "My profile".'
+  utter_case:
+    - text: "Here is the case associated with your account:"
+  utter_cases:
+    - text: "Here are all the cases associated with your account:"
+  utter_next_hearing_date:
+    - text: "Your next hearing information : "
+  utter_upcoming_hearing_information:
+    - text: "Upcoming Hearing Information:"
+  utter_no_hearing_date:
+    - text: "**N/A**, You have no upcoming hearing dates."
+  utter_ask_view_upcoming_hearing_dates:
+    - text: "Would you like to view your other upcoming hearing dates?"
+      quick_replies:
+        [
+          { "content_type": "text", "title": "Yes", "payload": "/affirm" },
+          { "content_type": "text", "title": "No", "payload": "/deny" },
+        ]
+  utter_directions_for_hearing_date:
+    - text: "You can find this in MyCase by looking at the left side of your MyCase screen, and then clicking the blue link with a date and time to the right of \"Next Hearing\". \ \n \n If a hearing isn't scheduled, \"**N/A**\" will be listed. The location is displayed below the case title."
+  utter_find_hearing_date:
+    - text: "Please re-enter your 9 digit case number, you can find this in MyCase by looking at the left side of your MyCase screen, and then clicking the blue link with a date and time to the right of \"Next Hearing\". \ \n \n If a hearing isn't scheduled, \"**N/A**\" will be listed."
+  utter_case_information:
+    - text: "All the information filed under **{case_number}** can be found [here]({file_link})."
+  utter_no_valid_case_information:
+    - text: 'If there are no valid files, "**N/A**" will appear.'
+  utter_no_case_information:
+    - text: "**N/A**, You have no files available."
+  utter_directions_for_case_information:
+    - text: "You can also find this information by Clicking on the case number in blue on the left side of your MyCase screen next to \"Case Number\". \ \n \n Both will display the Case History which is a listing of all activity on your case."
+  utter_find_case_information:
+    - text: "Please re-enter your 9 digit case number, you can find this in MyCase by looking at the left side of your MyCase screen next to \"Case Number\". \ \n \n If you would like to view everything filed under your case, click on the case number in blue next to \"Case Number\". \ \n \n This will display the Case History which is a listing of all activity on your case. \ \n \n If there is no valid files, \"**N/A**\" will appear."
+  utter_case_charges:
+    - text: "The charges related to **{case_number}** are"
+  utter_no_valid_case_charges:
+    - text: 'If there are no valid charges, "**N/A**" will appear.'
+  utter_no_case_charges:
+    - text: "**N/A**, You have no charges or offenses."
+  utter_directions_for_case_charges:
+    - text: "The charges for your case can also be found on MyCase, toward the center of the screen, in the section titled \"*Charges*\". \ \n \n \"*Charges*\" is located just below the section titled \"*Parties*\". The *offense*, *severity*, and *offense date* will be listed. \ \n \n If there are no charges associated with your case, the \"*Charges*\" section will not appear."
+  utter_find_case_charges:
+    - text: "Please re-enter your 9 digit case number, you can find this in My Case by looking at the left side of your My Case screen, and viewing Case Number. \ \n \n The charges for your case can also be found on My case, toward the center of the screen, in the section titled \"*Charges*\". \ \n \n \"*Charges*\" is located just below the section titled \"*Parties*\". The *offense*, *severity*, and *offense date* will be listed. \ \n \n If there are no charges associated with your case, the \"*Charges*\" section will not appear."
+  utter_no_file_upload_information:
+    - text: "You have no valid cases. If you have a document you would like to file please visit: [Document Filing Instructions]({document_filing_instructions_link})"
+  utter_file_upload_information:
+    - text: "For case **{case_number}**, Documents can be uploaded by using eDocument Preparation in MyCase. Look towards the bottom of your MyCase screen for the blue \"*File an eDocument*\" button. \ \n \n If you would like to fill out a form, please select the link [here]({fill_out_form_link}). \ \n \n The link will remain active for 1 minute and will expire after the initial click."
+  utter_find_file_upload_information:
+    - text: "Please re-enter your 9 digit case number, you can find this in My Case by looking at the left side of your My Case screen, and viewing Case Number. \ \n \n Documents can be uploaded by using eDocument Preparation in MyCase. Look towards the bottom of your MyCase screen for the blue \"*File an eDocument*\" button."
+  utter_no_case_parties:
+    - text: "**N/A**, You have no parties associated with your case"
+  utter_case_parties:
+    - text: "The parties related to **{case_number}** are"
+  utter_no_valid_case_parties:
+    - text: 'If there are no valid parties, "**N/A**" will appear.'
+  utter_find_case_parties:
+    - text: "All parties to your case will be listed under the Parties section of your MyCase page. \ \n \n If a party is represented, their attorney's name will also be listed."
+  utter_find_case_parties_information:
+    - text: 'Please re-enter you 9 digit case number, you can find this in MyCase by looking at the left side of your MyCase screen next to "Case Number".'
+  utter_no_case_payment:
+    - text: "**N/A**, You have no balance due."
+  utter_no_valid_case_payment:
+    - text: 'If there is no valid amount that is owed, "**N/A**" will appear.'
+  utter_find_case_payment:
+    - text: "Any amounts owing will be in the Account section of MyCase located above the Filed Documents section. \ \n \n A payment can also be made by selecting the blue \"Make a Payment\" button."
+  utter_find_case_payment_information:
+    - text: 'Please re-enter you 9 digit case number, you can find this in MyCase by looking at the left side of your MyCase screen next to "Case Number" and then by selecting the blue "Make a Payment" button in the Account section when a balance is owing.'
+  utter_directions_to_update_notification:
+    - text: "You can update your notification preferences by clicking on *My Profile* from your MyCase page. You can select/unselect the boxes for which you wish to receive/stop notifications respectively. \ \n \n To receive Mobile notifications, please enter or update your preferred number if you have not already. Your email address for MyCase cannot be changed.\ \n \n [Here]({url_link}) is the link for the My Profile page."
+  utter_directions_to_change_username:
+    - text: "Your username for MyCase can't be changed. You can update your password by clicking on *My Profile* from your MyCase page. \ \n \n Use the Account Information section to make the changes. \ \n \n [Here]({url_link}) is the link to the above mentioned page."
+  utter_directions_to_change_password:
+    - text: "You can update your password by clicking on *My Profile* from your MyCase page. Use the Account Information section to make the changes. \ \n \n Your username for MyCase can't be changed. \ \n \n [Here]({url_link}) is the link to the above mentioned page."
+  utter_eviction_summary:
+    - text: "{user_name}, I noticed you asked a question related to evictions. Here are some quick links to help you get started. \ \n \n To view an overview of eviction related topics, please visit: [Self-help - Housing]({self_help_housing_link}) \ \n \nFor more specific questions related to eviction, please visit one of the following links: \ \n \n [Protective Orders]({protective_orders_link}) \ \n \n [Eviction Information for Landlords]({eviction_information_for_landlords_link}) \ \n \n [Eviction Information for Tenants]({eviction_information_for_tenants_link}) \ \n \n [Bad Housing page from Utah Legal Services]({bad_housing_page_from_utah_legal_services_link}) \ \n \n [Answering a Complaint or Petition]({answering_a_complaint_or_petition_link}) \ \n \n [Tenant's Personal Property]({tenant_personal_property_link}) \ \n \n [Refunding Renter's Deposits]({refunding_renter_deposit_link}) \ \n \n [Finding Legal Help]({finding_legal_help_link}) \ \n \n [Self-Help Center]({self_help_center_link})"
+  utter_eviction_procedure:
+    - text: "If you are afraid of someone in your home, eviction might not be the right process for you. Call the Domestic Violence 24-Hour LINKLine at 800-897-5465 or see our page on [Protective Orders]({protective_orders_link}) \ \n \n If you are trying to evict your tenant, see our page on [Eviction Information for Landlords]({eviction_information_for_landlords_link}) for step by step instructions including a list of valid eviction notices \ \n \n If you are trying to evict your spouse, your situation might be more complicated. Please contact the [Self-Help Center]({self_help_center_link}) \ \n \n If you need more help, please contact the [Self-Help Center]({self_help_center_link})."
+  utter_process_eviction:
+    - text: "If you received an eviction notice: \ \n \n See our page on [Eviction Information for Tenants]({eviction_information_for_tenants_link}) for step by step instructions. \ \n \n Problems with the unit might not be enough to stop an eviction. See our page on [Eviction Information for Tenants]({eviction_information_for_tenants_link}) under what to do if you receive a notice to vacate. \ \n \n If you had bad housing conditions, you can read more about your rights and obligations on the [Bad Housing page from Utah Legal Services]({bad_housing_page_from_utah_legal_services_link}). \ \n \n If you received court papers for a different kind of case, read our page on [Answering a Complaint or Petition]({answering_a_complaint_or_petition_link}). If you aren't sure what to do next, please contact [Self-Help Center]({self_help_center_link})"
+  utter_retrieve_belongings:
+    - text: "If you were evicted from your rental unit, see our page on [Tenant's Personal Property]({tenant_personal_property_link}). \ \n \n If you have another situation, please contact the [Self-Help Center]({self_help_center_link})."
+  utter_process_rent_rejection:
+    - text: "Generally, a landlord is not required to accept partial payments. If your landlord issued you a Three Day Notice to Pay or Vacate, then they are required to accept the full amount due. If you have received a Summons and Complaint, you can note that you tried to pay in your Answer. You can file an answer online in MyCase."
+  utter_procedure_to_retrieve_deposit:
+    - text: "If you moved out and your landlord has not returned your security deposit, see our page on [Refunding Renter's Deposits]({refunding_renter_deposit_link})."
+  utter_commercial_eviction_procedure:
+    - text: "We don't have information on how to evict a commercial tenant. This can be complicated. You might want to get legal advice. See our [Finding Legal Help]({finding_legal_help_link}) Page for more information. \ \n \n Commercial evictions cannot be filed through OCAP, OCAP is only for residential evictions. You might want to get legal advice from the link above. "
+  utter_process_missed_hearing_notice:
+    - text: "Please contact the [Self-Help Center]({self_help_center_link})."
+  utter_process_lost_connection_during_hearing:
+    - text: "Please contact the [Self-Help Center]({self_help_center_link})."
+  utter_popular_questions:
+    - text: "Please select from the popular questions below, or type in your question."
+      quick_replies:
+        [
+          {
+            "content_type": "text",
+            "title": "📚 Everything filed in my case",
+            "payload": "/get_case_information",
+          },
+          {
+            "content_type": "text",
+            "title": "📅 Next hearing date",
+            "payload": "/get_hearing_date",
+          },
+          {
+            "content_type": "text",
+            "title": "📘 Case charges",
+            "payload": "/get_charges",
+          },
+          {
+            "content_type": "text",
+            "title": "👥 Case parties",
+            "payload": "/get_parties",
+          },
+          {
+            "content_type": "text",
+            "title": "🧾 Case payment",
+            "payload": "/get_payment",
+          },
+          {
+            "content_type": "text",
+            "title": "⬆️ File upload",
+            "payload": "/get_file_upload_information",
+          },
+        ]
+  utter_eviction_popular_questions:
+    - text: "Please select from the popular questions below, or type a more specific question."
+      quick_replies:
+        [
+          {
+            "content_type": "text",
+            "title": "Evicting someone",
+            "payload": "/evict_someone",
+          },
+          {
+            "content_type": "text",
+            "title": "Receiving an eviction notice",
+            "payload": "/process_eviction",
+          },
+          {
+            "content_type": "text",
+            "title": "Retrieving belongings",
+            "payload": "/retrieve_belongings",
+          },
+          {
+            "content_type": "text",
+            "title": "Landlord not accepting rent",
+            "payload": "/handle_rent_rejection",
+          },
+          {
+            "content_type": "text",
+            "title": "Getting deposit back",
+            "payload": "/retrieve_deposit",
+          },
+          {
+            "content_type": "text",
+            "title": "Evicting commercial tenants",
+            "payload": "/evict_commercial_tenant",
+          },
+        ]
+  utter_more_eviction_related_question:
+    - text: Do you have another question related to evictions?
+      quick_replies:
+        [
+          { "content_type": "text", "title": "Yes", "payload": "/affirm" },
+          { "content_type": "text", "title": "No", "payload": "/deny" },
+        ]
+  utter_offer_help:
+    - text: "Can I help you with something else?"
+      quick_replies:
+        [
+          { "content_type": "text", "title": "Yes", "payload": "/affirm" },
+          { "content_type": "text", "title": "No", "payload": "/deny" },
+        ]
+  utter_check_user_satisfaction:
+    - text: "I'm still learning. Did I give you the information you were looking for?"
+      quick_replies:
+        [
+          { "content_type": "text", "title": "Yes", "payload": "/affirm" },
+          { "content_type": "text", "title": "No", "payload": "/deny" },
+        ]
+  utter_ask_feedback:
+    - text: "Can you tell me what question you were trying to get answered? This information will help train me for the future."
+  utter_thanks:
+    - text: "Thanks for this feedback. I'll work on answering this question in the future. I'll be right here if you need anything."
+  utter_authentication_issue:
+    - text: "Authentication issue."
+  utter_problem:
+    - text: "*COURTney* has encountered a problem. It will be resolved soon. Please try again later."
+  utter_not_applicable:
+    - text: "**N/A**"
+  utter_chitchat:
+    - text: "I'm sorry, I'm unable to understand the question you are asking. When asking a question, please make sure it is related to: \ \n \n ⏩ *Case history details* \ \n ⏩ *Your next hearing date* \ \n ⏩ *Charges on your case* \ \n ⏩ *Parties on your case* \ \n ⏩ *Amount due on your case* \ \n ⏩ *E-document upload* \ \n ⏩ *Eviction*"
+  utter_chitchat/ask_name:
+    - text: "I'm *COURTney* powered by RASA. I can help you with information regarding: \ \n \n ⏩ *Case history details* \ \n ⏩ *Your next hearing date* \ \n ⏩ *Charges on your case* \ \n ⏩ *Parties on your case* \ \n ⏩ *Amount due on your case* \ \n ⏩ *E-document upload* \ \n ⏩ *Eviction*"
+  utter_chitchat/ask_handoff:
+    - text: "This feature is currently not available"
+  utter_chitchat/out_of_bound:
+    - text: "I'm sorry, I'm unable to understand the question you are asking. When asking a question, please make sure it is related to: \ \n \n ⏩ *Case history details* \ \n ⏩ *Your next hearing date* \ \n ⏩ *Charges on your case* \ \n ⏩ *Parties on your case* \ \n ⏩ *Amount due on your case* \ \n ⏩ *E-document upload* \ \n ⏩ *Eviction*"
+  utter_help:
+    - text: "I can help you with information regarding: \ \n \n ⏩ *Case history details* \ \n ⏩ *Your next hearing date* \ \n ⏩ *Charges on your case* \ \n ⏩ *Parties on your case* \ \n ⏩ *Amount due on your case* \ \n ⏩ *E-document upload* \ \n ⏩ *Eviction*"
+      quick_replies:
+        [
+          {
+            "content_type": "text",
+            "title": "📚 Everything filed in my case",
+            "payload": "/get_case_information",
+          },
+          {
+            "content_type": "text",
+            "title": "📅 Next hearing date",
+            "payload": "/get_hearing_date",
+          },
+          {
+            "content_type": "text",
+            "title": "📘 Case charges",
+            "payload": "/get_charges",
+          },
+          {
+            "content_type": "text",
+            "title": "👥 Case parties",
+            "payload": "/get_parties",
+          },
+          {
+            "content_type": "text",
+            "title": "🧾 Case payment",
+            "payload": "/get_payment",
+          },
+          {
+            "content_type": "text",
+            "title": "⬆️ File upload",
+            "payload": "/get_file_upload_information",
+          },
+        ]
+  utter_default:
+    - text: "I'm sorry, I'm unable to understand the question you are asking. When asking a question, please make sure it is related to: \ \n \n ⏩ *Case history details* \ \n ⏩ *Your next hearing date* \ \n ⏩ *Charges on your case* \ \n ⏩ *Parties on your case* \ \n ⏩ *Amount due on your case* \ \n ⏩ *E-document upload* \ \n ⏩ *Eviction*"
+
+actions:
+  - action_session_start
+  - action_welcome_user
+  - action_greet_user
+  - action_fetch_hearing_date
+  - action_fetch_all_cases
+  - action_fetch_case_information
+  - action_fetch_charges
+  - action_fetch_parties
+  - action_fetch_payment
+  - action_fetch_file_upload_information
+  - action_save_feedback
+  - validate_feedback_form
+  - validate_case_form
+  - action_ask_case_number
+  - action_fetch_next_hearing_date
+  - validate_upcoming_hearing_date_form
+  - action_provide_eviction_summary
+  - action_provide_eviction_procedure
+  - action_process_eviction
+  - action_retrieve_belongings
+  - action_process_rent_rejection
+  - action_retrieve_deposit
+  - action_provide_commercial_eviction_procedure
+  - action_direct_users_to_update_notification
+  - action_direct_users_to_change_username
+  - action_direct_users_to_change_password
+  - action_process_missed_hearing_notice
+  - action_process_lost_connection_during_hearing
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

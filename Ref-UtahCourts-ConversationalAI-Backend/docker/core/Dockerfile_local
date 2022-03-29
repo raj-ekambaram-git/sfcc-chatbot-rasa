@@ -1,0 +1,5 @@
+FROM rasa/rasa:2.8.25-full
+
+WORKDIR /app
+
+COPY . .

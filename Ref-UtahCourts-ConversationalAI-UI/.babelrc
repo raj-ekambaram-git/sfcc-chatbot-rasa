@@ -1,0 +1,32 @@
+{
+    "presets": [
+        "@babel/preset-react",
+        [
+          "@babel/preset-env",
+          {
+            "targets": {
+              "esmodules": true
+            }
+          }
+        ]
+    ],
+    "plugins": [
+        "@babel/transform-runtime",
+        "transform-class-properties",
+        "@babel/plugin-proposal-object-rest-spread",
+        [
+            "module-resolver",
+            {
+                "root": ["./src"],
+                "alias": {
+                    "constants": "./src/constants.js",
+                    "assets": "./assets",
+                    "tests-mocks": "./mocks",
+                    "actions": "./src/store/actions",
+                    "helper": "./src/store/reducers/helper.js",
+                    "messagesComponents": "./src/components/Widget/components/Conversation/components/Messages/components"
+                }
+            }
+        ]
+    ]
+}

@@ -1,0 +1,522 @@
+version: "2.0"
+
+nlu:
+  - intent: get_all_cases
+    examples: |
+      - all cases
+      - other cases
+      - view other cases
+      - view all cases
+      - view all my cases
+      - how can i view all cases?
+      - how can i view all cases on my case?
+      - how can i access all cases?
+      - how can i see all my cases?
+      - how can i view my cases?
+      - how can i view my other cases?
+      - do i have other cases
+      - do i have other cases on file?
+      - do i have multiple cases?
+      - do i have many cases?
+      - show me all my cases
+      - show me all cases on my case
+      - show me my other cases
+      - show me all cases on my account
+      - where can i view all cases?
+      - where can i view all my cases?
+      - where can i see my cases?
+      - where can i see all my cases?
+      - where can i see my other cases?
+      - where can i view my other cases?
+      - can i see all case?
+      - can i see all my cases?
+      - can i see all my open cases?
+      - can i view all my cases ?
+      - can i view my cases ?
+      - can i see my other cases?
+      - can i view my other cases?
+      - give me all my cases
+      - give me all cases
+      - give me my other cases
+      - what are my other cases?
+      - what are all my cases?
+      - i need my other cases
+      - i need to view my cases
+      - i need to view all cases
+
+  - intent: get_hearing_date
+    examples: |
+      - when is my hearing date for case 123456789?
+      - when is my court date for case 123456789?
+      - when is my hearing date for case number 123456789?
+      - when is my next hearing for 123456789?
+      - when is my hearing date for [justice](court_type) case 123456789?
+      - when is my court date for [district](court_type) case 123456789?
+      - when is my hearing date for [justice](court_type) case number 123456789?
+      - when is my next hearing for [district](court_type) 123456789?
+      - when is my hearing date for [justice](court_type) case 123456789 at location [1234](location_code)?
+      - when is my court date for [district](court_type) case 123456789 at [1234](location_code)?
+      - when is my hearing date for [justice](court_type) case number 123456789 in my location [1234](location_code)?
+      - when is my next hearing for [district](court_type) 123456789 in [1234](location_code)?
+      - when is my next hearing?
+      - what is my court date?
+      - when do i come to court?
+      - when am i supposed to showup for my hearing at court?
+      - how can i find my hearing date?
+      - how do i know when to showup for court?
+      - am i supposed to showup in court for a hearing?
+      - do i have a hearing date?
+      - do i have to go to court?
+      - when am i supposed to showup for my hearing?
+      - hearing location
+      - court location
+      - hearing date location
+      - court date location
+      - location for hearing
+      - location for hearing date
+      - location for court date
+      - location for my next hearing
+      - location for my next hearing date
+      - location for my next court date
+      - where is my next hearing ?
+      - where is my next hearing date?
+      - where is my hearing date?
+      - where is my next court date?
+      - where is my court date?
+      - where is my court date located?
+      - where is my hearing date located?
+      - where is my next hearing date located?
+      - where is my next court date located?
+      - where do i go for my next hearing date?
+      - where do i go for my next court date?
+      - where do i go for my next hearing ?
+      - where do i go for my court date?
+      - where do i go for my hearing?
+      - where do i go for my hearing date?
+      - what is the location of my hearing?
+      - what is the location of my hearing date?
+      - what is the location of my court date?
+      - what is the location for my next court date?
+      - what is the location for my next hearing ?
+      - what is the location for my next hearing date?
+      - find the location of my hearing
+      - find the location of my hearing date
+      - find the location of my court date
+      - find the location of my next hearing
+      - find the location of my next hearing date
+      - find the location of my next court date
+      - find hearing location
+      - find hearing date location
+      - find court date location
+      - do i have a location for my hearing?
+      - do i have a location for my hearing date?
+      - do i have a location for my court date?
+      - do i have a location for my next hearing?
+      - do i have a location for my next hearing date?
+      - do i have a location for my next court date?
+      - give me my court date location
+      - give me my hearing date location
+      - give me my hearing location
+      - give me the location for my next court date
+      - give me the location for next hearing
+      - give me the location for next hearing date
+      - look up the location for my hearing?
+      - look up the location for my hearing date?
+      - look up the location for my court date?
+      - look up the location for my next hearing
+      - look up the location for my next hearing date
+      - look up the location for my next court date
+      - hearing location for case 123456789
+      - court location for case 123456789
+      - hearing date location for case 123456789
+      - court date location for case 123456789
+      - location for hearing 123456789
+      - location for hearing date 123456789
+      - location for court date 123456789
+      - location for my next hearing 123456789
+      - location for my next hearing date 123456789
+      - location for my next court date 123456789
+      - where is my next hearing  for case 123456789?
+      - where is my next hearing date for case 123456789?
+      - where is my hearing date for case 123456789?
+      - where is my next court date for case 123456789?
+      - where is my court date for case 123456789?
+      - where is my court date located for case 123456789?
+      - where is my hearing date located for case 123456789?
+      - where is my next hearing date located for case 123456789?
+      - where is my next court date located for case 123456789?
+      - where do i go for my next hearing date for case 123456789?
+      - where do i go for my next court date for case 123456789?
+      - where do i go for my next hearing for case 123456789?
+      - where do i go for my court date for case 123456789?
+      - where do i go for my hearing for case 123456789?
+      - where do i go for my hearing date for case 123456789?
+      - what is the location of my hearing for case 123456789?
+      - what is the location of my hearing date for case 123456789?
+      - what is the location of my court date for case 123456789?
+      - what is the location for my next court date for case 123456789?
+      - what is the location for my next hearing  for case 123456789?
+      - what is the location for my next hearing date for case 123456789?
+      - find the location of my hearing for case 123456789?
+      - find the location of my hearing date for case 123456789?
+      - find the location of my court date for case 123456789?
+      - find the location of my next hearing for case 123456789?
+      - find the location of my next hearing date for case 123456789?
+      - find the location of my next court date for case 123456789?
+      - find hearing location for case 123456789?
+      - find hearing date location for case 123456789?
+      - find court date location for case 123456789?
+      - do i have a location for my hearing date for case 123456789?
+      - do i have a location for my hearing date for case 123456789?
+      - do i have a location for my court date for case 123456789?
+      - do i have a location for my next hearing for case 123456789?
+      - do i have a location for my next hearing date for case 123456789?
+      - do i have a location for my next court date for case 123456789?
+      - give me my court date location for case 123456789?
+      - give me my hearing date location for case 123456789?
+      - give me my hearing location for case 123456789?
+      - give me the location for my next court date for case 123456789?
+      - give me the location for next hearing  for case 123456789?
+      - give me the location for next hearing date for case 123456789?
+      - look up the location for my hearing for case 123456789?
+      - look up the location for my hearing date for case 123456789?
+      - look up the location for my court date for case 123456789?
+      - look up the location for my next hearing  for case 123456789?
+      - look up the location for my next hearing date for case 123456789?
+      - look up the location for my next court date for case 123456789?
+
+  - intent: get_case_information
+    examples: |
+      - get case files for case 123456789
+      - case files for 123456789
+      - where can i find information on my case 123456789?
+      - how can i find information on my case number 123456789?
+      - i need help finding information on my case 123456789
+      - get case files for [justice](court_type) case 123456789
+      - case files for [district](court_type) 123456789
+      - where can i find information on my [justice](court_type) case 123456789?
+      - how can i find information on my [justice](court_type) case number 123456789?
+      - i need help finding information on my [district](court_type) case 123456789
+      - get case files for [justice](court_type) case 123456789 at location [1234](location_code)
+      - case files for [district](court_type) 123456789 at [1234](location_code)
+      - where can i find information on my [justice](court_type) case 123456789 in my location [1234](location_code)?
+      - how can i find information on my [justice](court_type) case number 123456789 on location [1234](location_code)?
+      - i need help finding information on my [district](court_type) case 123456789 in [1234](location_code)
+      - how can i see everything filed for my case?
+      - where can i find my case files?
+      - where can i find information on my case?
+      - how can i find information on my case?
+      - how can i get information on my case?
+      - information on my case?
+      - i need information on my case
+      - i need help finding information on my case
+      - i am looking for my case information
+      - could you look up information related to my case?
+      - could you assist me in finding information on my case?
+      - any new information on my case?
+      - give me information on my case
+      - find my case information
+      - find information on my case
+
+  - intent: get_charges
+    examples: |
+      - where are the offenses on my case 123456789?
+      - where can i find the offenses on my case 123456789?
+      - how can i find offenses on my case 123456789?
+      - how can i get the offenses on my case 123456789?
+      - how can i get offenses filed on my case 123456789?
+      - offenses on my case 123456789?
+      - i need the offenses on my case 123456789.
+      - i need help finding offenses on my case 123456789.
+      - i am looking for offenses on my case 123456789.
+      - where are the offenses on my [justice](court_type) case 123456789?
+      - where can i find the offenses on my [district](court_type) case 123456789?
+      - how can i find offenses on my [justice](court_type) case 123456789?
+      - how can i get the offenses on my [district](court_type) case 123456789?
+      - how can i get offenses filed on my [justice](court_type) case 123456789?
+      - offenses on my [district](court_type) case 123456789?
+      - i need the offenses on my [justice](court_type) case 123456789.
+      - i need help finding offenses on my [district](court_type) case 123456789.
+      - i am looking for offenses on my [justice](court_type) case 123456789.
+      - where are the offenses on my [justice](court_type) case 123456789 at location [1234](location_code)?
+      - where can i find the offenses on my [district](court_type) case 123456789 in location [1234](location_code)?
+      - how can i find offenses on my [justice](court_type) case 123456789 in [1234](location_code)?
+      - how can i get the offenses on my [district](court_type) case 123456789 in my [1234](location_code)?
+      - how can i get offenses filed on my [justice](court_type) case 123456789 at [1234](location_code)?
+      - offenses on my [district](court_type) case 123456789 in my area [1234](location_code)?
+      - i need the offenses on my [justice](court_type) case 123456789 at [1234](location_code).
+      - i need help finding offenses on my [district](court_type) case 123456789 on my location [1234](location_code).
+      - i am looking for offenses on my [justice](court_type) case 123456789 at location [1234](location_code).
+      - i am looking for information on my offenses.
+      - could you look up offenses related to my case 123456789?
+      - could you look up my offenses?
+      - could you find my offenses?
+      - could you assist me in finding information on my offenses?
+      - could you help me in finding information on my offenses?
+      - any updates on my charges?
+      - any new information on my charges?
+      - any information on my charges?
+      - give me information on my charges.
+      - give me my charges.
+      - find my charges.
+      - find the charges on my case.
+      - find charges on my case.
+      - find information on my charges.
+      - what are the charges on my case?
+      - what are my charges?
+      - do i have any charges on my case?
+      - do i have any charges?
+      - charges?
+      - offenses?
+
+  - intent: get_file_upload_information
+    examples: |
+      - where can i upload files?
+      - where can i file documents?
+      - where can i file documentation?
+      - where can i upload documentation?
+      - where can i upload files for case 123456789?
+      - where can i file documents for case 123456789?
+      - where can i file documentation for case 123456789?
+      - where can i upload documentation for case 123456789?
+      - where can i upload documentation for my case?
+      - how can i upload documentation for my case?
+      - how can i upload documentation?
+      - how can i upload documents?
+      - i need to file documentation
+      - i need to upload documents
+      - i need to upload documentation
+      - i need to file documents
+      - i need to file documentation for case, 123456789
+      - i need to upload documents for case, 123456789
+      - i need to upload documentation for case, 123456789
+      - i need to file documents for case, 123456789
+      - i need to upload documents on my case 123456789
+      - i need to upload documentation on my case 123456789
+      - i need to upload documents on my case on my case 123456789.
+      - i need to upload documentation on my case 123456789.
+      - i need to upload files on my case.
+      - i need to upload information on my case.
+      - i need help filing documentation
+      - i need help uploading documentation on my case.
+      - i need help uploading files on my case.
+      - i need help uploading files
+      - i need help uploading documents on my case.
+      - i'm looking to file documents
+      - i'm looking to upload documents
+      - i'm looking to upload files
+      - could you upload documents to my case?
+      - could you upload files to my case?
+      - could you upload files?
+      - could you upload documents to my case 123456789?
+      - could you upload files to my case 123456789?
+      - could you upload files for my case 123456789?
+      - could you upload documents?
+      - could you file documents
+      - could you file documentation
+      - could you assist me in uploading documentation on my case?
+      - could you assist me in uploading information on my case?
+      - could you help me upload documentation on my case?
+      - could you help me upload information on my case?
+      - help me file documents
+      - help me file information
+      - help me file documents for case, 123456789
+      - help me file information for case, 123456789
+      - help me file documentation
+      - help me upload documents
+      - help me upload documentation
+      - help me upload files
+      - help me upload information
+      - help me upload files for my case, 123456789
+      - help me upload information for my case, 123456789
+      - upload documents
+      - upload file
+      - upload documents for my case 123456789
+      - upload file case 123456789
+      - upload documents for my [justice](court_type) case 123456789 at [1234](location_code).
+      - upload file for my [justice](court_type) case 123456789 at [1234](location_code).
+      - file upload for my [justice](court_type) case 123456789 at [1234](location_code).
+      - file information for my [justice](court_type) case 123456789 at [1234](location_code)
+      - help me upload documents for my [justice](court_type) case 123456789 at [1234](location_code)
+      - i need help uploading files for my [justice](court_type) on my case 123456789 at [1234](location_code).
+      - upload documentation
+      - document upload
+      - file upload
+      - file upload case 123456789
+      - file information
+      - file documentation
+      - file documents
+      - file documents case 123456789
+
+  - intent: get_parties
+    examples: |
+      - where can i find parties related to my case?
+      - where can i find parties associated with my case?
+      - where can i locate the parties on my case?
+      - where can i find information related to parties?
+      - where can i find parties related to my case, 123456789?
+      - where can i find parties associated with my case, 123456789?
+      - where can i locate the parties on my case, 123456789?
+      - where can i find information related to parties, 123456789?
+      - how can i find parties related to my case?
+      - how do i find parties involved in my case?
+      - how can i find parties associated with my case?
+      - how can i find parties on my case?
+      - how can i find parties on my [justice](court_type) case 123456789 in [1234](location_code)
+      - associated parties on my [justice](court_type) case 123456789 in [1234](location_code)
+      - related parties on my [justice](court_type) case 123456789 in [1234](location_code)
+      - parties involved on my [justice](court_type) case 123456789 in [1234](location_code)
+      - parties associated on my [justice](court_type) case 123456789 in [1234](location_code)
+      - associated parties
+      - related parties
+      - parties involved in my case
+      - parties on my case
+      - parties related to my case
+      - parties involved in my case
+      - parties correlated to my case
+      - parties associated to my case
+      - parties involved in my case
+      - parties on my case, 123456789
+      - parties related to my case, 123456789
+      - parties involved in my case, 123456789
+      - parties correlated to my case, 123456789
+      - parties associated to my case, 123456789
+      - i need to find parties associated to my case
+      - i need to find parties related to my case
+      - i need to locate parties on my case
+      - i need to locate parties correlated to my case
+      - i need help finding parties on my case
+      - i need to locate parties associated to my case
+      - i'm looking for parties on my case
+      - i'm looking for parties related to my case
+      - i'm looking for parties correlated to my case
+      - could you find parties on my case?
+      - could you find related parties?
+      - could you find parties related to my case?
+      - could you find parties on my case, 123456789?
+      - could you find related parties, 123456789?
+      - could you find parties related to my case, 123456789?
+      - could you locate parties on my case?
+      - could you locate parties related to my case?
+      - could you assist me in finding related parties?
+      - could you assist me in locating related parties
+      - could you help me find parties on my case?
+      - could you help me find parties associated with my case?
+      - could you help me find parties related to my case?
+      - help me find related parties
+      - help me find parties on my case
+      - help me find parties correlated to my case
+      - help me find related parties, 123456789
+      - help me find related parties on my [justice](court_type) case 123456789 in [1234](location_code)
+      - help me find parties on my case, 123456789
+      - help me find parties correlated to my case, 123456789
+      - help me locate parties on my case
+      - help me get parties on my case
+      - help me find parties involved in my case
+      - help me find associated parties
+      - help me find parties associated to my case
+      - find related parties
+      - find parties related to my case
+      - find parties involved in my case
+      - find parties correlated to my case
+      - find parties related to my case 123456789
+      - find parties involved in my case 123456789
+      - find parties correlated to my case 123456789
+      - find related parties on my [justice](court_type) case 123456789 in [1234](location_code)
+      - find involved parties on my [justice](court_type) case 123456789 in [1234](location_code)
+      - find correlated parties on my [justice](court_type) case 123456789 in [1234](location_code)
+      - find parties
+      - find all related parties
+      - who are the parties on my case?
+      - who are the parties related to my case?
+      - who are the parties on my case 123456789?
+      - who are the parties related to my case 123456789?
+      - who are the parties involved in my case?
+      - who are the parties involved in my case?
+
+  - intent: get_payment
+    examples: |
+      - where can i make a payment?
+      - where can i make a payment for my case?
+      - where can i find what i owe?
+      - where can i find what i owe on my case?
+      - where can i locate payments on my case?
+      - where can i find payment related information?
+      - where can i make a payment for my case 123456789?
+      - where can i make a payment for my case 123456789?
+      - where can i find what i owe for 123456789?
+      - where can i find what i owe on my case 123456789?
+      - where can i locate payments on my case 123456789?
+      - where can i find payment related information?
+      - how do i make a payment?
+      - how do i make a payment in my case?
+      - how do i make a payment for case 123456789?
+      - how do i make a payment in my case 123456789?
+      - how can i find out what i owe for my case?
+      - how can i pay my current balance?
+      - how can i make payments for my case?
+      - how much do i owe?
+      - how much money do i owe?
+      - how much do i owe on my case?
+      - how much money do i owe on my case?
+      - how much do i owe for case 123456789?
+      - how much money do i owe for 123456789?
+      - how much do i owe on my case 123456789?
+      - how much money do i owe on my case 123456789?
+      - payments
+      - payments related to my case
+      - payments on my case
+      - payments needed for my case
+      - payments case 123456789
+      - payments related to my case 123456789
+      - payments on my case 123456789
+      - payments needed for my case 123456789
+      - what do i owe?
+      - what payments do i need to make?
+      - what is the balance on my case?
+      - what is my balance?
+      - what is the current balance on my case?
+      - what is the balance on my case?
+      - what is my balance?
+      - what is the current balance on my case?
+      - what do i owe on my case?
+      - i need to find what i owe on my case
+      - i need to find how to make a payment on  my case
+      - i need to find what i owe
+      - i need to make a payment
+      - i need to make a payment on my case
+      - payments on my [justice](court_type) case 123456789 in [1234](location_code)
+      - payments related to my case 123456789 on my [justice](court_type) in [1234](location_code)
+      - payments needed to my case 123456789 on my [justice](court_type) in [1234](location_code)
+      - what do i owe for case 123456789 on my [justice](court_type) in [1234](location_code)
+      - i need to find what i owe on my [justice](court_type) case 123456789 in [1234](location_code)
+      - i need to find how to make a payment on my [justice](court_type) case 123456789 in [1234](location_code)
+      - i need to find what i owe on my [justice](court_type) case 123456789 in [1234](location_code)
+      - i need to make a payment on my [justice](court_type) case 123456789 in [1234](location_code)
+      - i need to make a payment on my [justice](court_type) case 123456789 in [1234](location_code)
+      - i need to make a payment for case 123456789
+      - i need to make a payment on my case 123456789
+      - i am looking for what i owe on my case
+      - i am looking for payments that need to made on   my case
+      - i am looking to make a payment
+      - could you find what i owe
+      - could you find what i owe on my case?
+      - could you locate payments on my case?
+      - could you locate what i owe?
+      - could you locate what i owe on my case?
+      - could you assist me in finding what i owe on my case?
+      - could you assist me in finding payments that need to be made?
+      - could you help me make payments on my case?
+      - could you help me find what i owe?
+      - could you help me find what i owe on my case?
+      - help me find what i owe
+      - help me find what i owe on my case
+      - help me find ways to make a payment on my case
+      - help me locate what i owe on my case
+      - help me find how to make payment for my case
+      - help me make a payment
+      - help me find how to pay my current balance
+      - help me find how to pay my current balance on my case
+      - help me make a payment on my case 123456789
+      - help me find how to pay my current balance, case 123456789
+      - help me find how to pay my current balance on my case 123456789

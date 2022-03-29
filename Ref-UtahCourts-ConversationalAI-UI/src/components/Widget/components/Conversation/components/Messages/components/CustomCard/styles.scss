@@ -1,0 +1,61 @@
+@import 'variables.scss';
+@import 'common.scss';
+
+.#{$namespace}custom-container {
+    display: flex;
+    padding-bottom: 10px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    padding-left: 5px;
+    padding-right: 0;
+    margin-top: 8px;
+    position: relative;
+
+    .#{$namespace}custom-card {
+        display: flex;
+        width: 220px;
+        max-width: 220px;
+        margin: 12px;
+        padding: 10px;
+        box-shadow: 4px 2px 12px 1px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        overflow: hidden;
+        position: relative;
+        flex-direction: column;
+
+        .#{$namespace}hr-line {
+            border-top: 1px solid $grey-2;
+            border-bottom: 1px solid $grey-2;
+        }
+
+        .#{$namespace}custom-card-title {
+            width: 100%;
+            margin: 7px;
+            text-decoration: none;
+            color: inherit;
+            opacity: 0.5;
+            font-size: 0.9em;
+        }
+
+        .#{$namespace}custom-card-text {
+            display: block;
+            margin: 7px;
+            white-space: normal;
+            line-height: initial;
+            cursor: default;
+            text-decoration: none;
+            color: inherit;
+            font-size: 0.9em;
+        }
+
+        .#{$namespace}custom-card-button {
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            background-color: $tertiary;
+            text-align: center;
+            cursor: pointer;
+            color: $white;
+        }
+    }
+}

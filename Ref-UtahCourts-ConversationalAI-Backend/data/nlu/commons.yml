@@ -1,0 +1,520 @@
+version: "2.0"
+
+nlu:
+  - intent: welcome
+    examples: |
+      - welcome
+      - welcome user
+
+  - intent: greet
+    examples: |
+      - hey
+      - hello
+      - hi
+      - hello there
+      - good morning
+      - good evening
+      - moin
+      - hey there
+      - let's go
+      - hey dude
+      - goodmorning
+      - goodevening
+      - good afternoon
+
+  - intent: goodbye
+    examples: |
+      - cu
+      - good by
+      - cee you later
+      - bye
+      - goodbye
+      - have a nice day
+      - see you around
+      - bye bye
+      - see you later
+      - see you
+      - ta ta
+
+  - intent: thankyou
+    examples: |
+      - thanks
+      - thankyou
+      - thank you
+      - thanks a lot
+      - thanking you
+      - thanks much
+      - thank u
+      - thanks for the help
+      - cool
+
+  - intent: affirm
+    examples: |
+      - yes
+      - yeah
+      - yes please
+      - yup
+      - yes indeed
+      - of course
+      - sure
+      - certainly
+      - absolutely
+      - yep
+
+  - intent: deny
+    examples: |
+      - no
+      - nah
+      - not really
+      - no idea
+      - never
+      - i don't know
+      - i can't
+      - i won't
+      - i will not
+      - i cannot
+      - don't know
+
+  - intent: stop
+    examples: |
+      - stop
+      - close
+      - end
+      - skip
+
+  - intent: ask_help
+    examples: |
+      - please help me
+      - help me
+      - what can you do for me?
+      - help
+      - can you help me?
+      - can you offer some help?
+      - offer help
+      - can you assist me?
+      - assist me
+      - can you provide me assistance?
+
+  - intent: provide_case_number
+    examples: |
+      - 123456789
+      - my case number is [123456789](case_number)
+      - 123456789 is my case number
+      - my case num is 123456789
+      - case number 123456789
+      - case num 123456789
+      - case 123456789
+      - [justice](court_type) 123456789
+      - [district](court_type) 123456789 is my case number
+      - my [justice](court_type) case num is 123456789
+      - [district](court_type) case number 123456789
+      - [justice](court_type) case num 123456789
+      - [district](court_type) case 123456789
+
+  - intent: provide_case_details
+    examples: |
+      - the location code is [4444](location_code) and the court type is [district](court_type)
+      - the location code is [4444](location_code) and the court type is [district](court_type)
+      - case number is 123456789 and the location code is [1212](location_code)
+
+  - intent: change_username
+    examples: |
+      - username
+      - new username
+      - change username
+      - change my username
+      - username change
+      - update username
+      - username update
+      - i need to change my username
+      - i need help changing my username
+      - i need my username changed
+      - i need a new username
+      - help me change my username
+      - help me update my username
+      - help me get a new username
+      - i want a new username
+      - how can i change my username?
+      - how can i update my username ?
+      - how can i get a new username?
+      - how do i get a new username?
+      - how do i change my username?
+      - how do i update my username?
+      - where can i change my username?
+      - where can i get a new username?
+      - where can i update my username?
+      - can you update my username?
+      - can you change my username?
+      - help me change my username
+      - help me update my username
+      - help me get a new username
+
+  - intent: change_password
+    examples: |
+      - password
+      - new password
+      - change password
+      - change my password
+      - password change
+      - update password
+      - password update
+      - i need to change my password
+      - i need help changing my password
+      - i need my password changed
+      - i need a new password
+      - help me change my password
+      - help me update my password
+      - help me get a new password
+      - i want a new password
+      - how can i change my password?
+      - how can i update my password ?
+      - how can i get a new password?
+      - how do i change my password?
+      - how do i update my password?
+      - where can i change my password?
+      - where can i get a new password?
+      - where can i update my password?
+      - can you update my password?
+      - can you change my password?
+
+  - intent: update_notification
+    examples: |
+      - notifications
+      - change notifications
+      - update notifications
+      - modify notifications
+      - i need to change my notifications
+      - i need to update my notifications
+      - i need to modify my notifications
+      - i want to change my notifications
+      - i want to update my notifications
+      - i want to modify my notifications
+      - how do i change notifications
+      - how do i change my notifications
+      - how do i modify my notifications
+      - where can i change my notifications
+      - where can i update my notifications
+      - where can i modify notifications on my case
+      - can i change my notifications
+      - can i modify my notifications
+      - can i update my notifications
+      - start notifications
+      - enable notifications
+      - turn on notifications
+      - add notifications
+      - get notifications
+      - setup notifications
+      - i want notifications
+      - i want to receive notifications
+      - i want to setup notifications
+      - i want to sign up for notifications
+      - i want to start notifications
+      - i want to enable notifications
+      - i want to turn on notifications
+      - i want to get notifications
+      - i need notifications
+      - i need to receive notifications
+      - i need to setup notifications
+      - i need to sign up for notifications
+      - i need to turn on notifications
+      - i need to enable notifications
+      - i need to get notifications
+      - i need to add notifications
+      - where can i sign up for notifications
+      - where can i get notifications
+      - where can i start notifications
+      - where can i enable notifications
+      - where can i turn on notifications
+      - where can i add notifications
+      - how do i start notifications
+      - how do i setup notifications
+      - how do i get notifications
+      - how do i enable notifications
+      - how do i turn on notifications
+      - how do i add notifications
+      - start email notifications
+      - enable email notifications
+      - turn on email notifications
+      - add email notifications
+      - get email notifications
+      - setup email notifications
+      - i want email notifications
+      - i want to receive email notifications
+      - i want to setup email notifications
+      - i want to sign up for email notifications
+      - i want to start email notifications
+      - i want to enable email notifications
+      - i want to turn on email notifications
+      - i want to get email notifications
+      - i need email notifications
+      - i need to receive email notifications
+      - i need to setup email notifications
+      - i need to sign up for email notifications
+      - i need to turn on email notifications
+      - i need to enable email notifications
+      - i need to get email notifications
+      - i need to add email notifications
+      - where can i sign up for email notifications
+      - where can i get email notifications
+      - where can i start email notifications
+      - where can i enable email notifications
+      - where can i turn on email notifications
+      - where can i add email notifications
+      - how do i start email notifications
+      - how do i setup email notifications
+      - how do i get email notifications
+      - how do i enable email notifications
+      - how do i turn on email notifications
+      - how do i add email notifications
+      - start text notifications
+      - enable text notifications
+      - turn on text notifications
+      - add text notifications
+      - get text notifications
+      - setup text notifications
+      - i want text notifications
+      - i want to receive text notifications
+      - i want to setup text notifications
+      - i want to sign up for text notifications
+      - i want to start text notifications
+      - i want to enable text notifications
+      - i want to turn on text notifications
+      - i want to get text notifications
+      - i need text notifications
+      - i need to receive text notifications
+      - i need to setup text notifications
+      - i need to sign up for text notifications
+      - i need to turn on text notifications
+      - i need to enable text notifications
+      - i need to get text notifications
+      - i need to add text notifications
+      - where can i sign up for text notifications
+      - where can i get text notifications
+      - where can i start text notifications
+      - where can i enable text notifications
+      - where can i turn on text notifications
+      - where can i add text notifications
+      - how do i start text notifications
+      - how do i setup text notifications
+      - how do i get text notifications
+      - how do i enable text notifications
+      - how do i turn on text notifications
+      - how do i add text notifications
+      - stop notifications
+      - disable notifications
+      - turn off notifications
+      - remove notifications
+      - i want stop notifications
+      - i want remove notifications
+      - i want to disable notifications
+      - i want to turn off notifications
+      - i need to stop notifications
+      - i need to disable notifications
+      - i need to turn off notifications
+      - i need to remove notifications
+      - where can i stop notifications
+      - where can i disable notifications
+      - where can i turn off notifications
+      - where can i remove notifications
+      - how do i stop notifications
+      - how do i disable notifications
+      - how do i turn off notifications
+      - stop email notifications
+      - disable email notifications
+      - turn off email notifications
+      - remove email notifications
+      - i want stop email notifications
+      - i want remove email notifications
+      - i want to disable email notifications
+      - i want to turn off email notifications
+      - i need to stop email notifications
+      - i need to disable email notifications
+      - i need to turn off email notifications
+      - i need to remove email notifications
+      - where can i stop email notifications
+      - where can i disable email notifications
+      - where can i turn off email notifications
+      - where can i remove email notifications
+      - how do i stop email notifications
+      - how do i disable email notifications
+      - how do i turn off email notifications
+      - how do i remove email notifications
+      - stop text notifications
+      - disable text notifications
+      - turn off text notifications
+      - remove text notifications
+      - i want stop text notifications
+      - i want remove text notifications
+      - i want to disable text notifications
+      - i want to turn off text notifications
+      - i need to stop text notifications
+      - i need to disable text notifications
+      - i need to turn off text notifications
+      - i need to remove text notifications
+      - where can i stop text notifications
+      - where can i disable text notifications
+      - where can i turn off text notifications
+      - where can i remove text notifications
+      - how do i stop text notifications
+      - how do i disable text notifications
+      - how do i turn off text notifications
+      - how do i remove text notifications
+
+  - intent: handle_missed_hearing_notice
+    examples: |
+      - no notice
+      - no hearing notice
+      - no hearing papers
+      - no one sent me a hearing notice
+      - no one sent me hearing papers
+      - i did not receive a hearing notice
+      - i did not receive a hearing papers
+      - i did not get a hearing notice
+      - i did not get hearing papers
+      - i didn't receive a hearing notice
+      - i didn't receive hearing papers
+      - i didn’t get a hearing notice
+      - i didn’t get hearing papers
+      - i was never sent a hearing notice
+      - i was never sent hearing papers
+      - i never got a hearing notice
+      - i never got hearing papers
+      - i have no hearing notice
+      - i have no notice for my hearing
+      - i had a hearing but i did not receive a notice
+
+  - intent: handle_lost_connection_during_hearing
+    examples: |
+      - missed hearing
+      - no connection
+      - lost connection
+      - bad connection
+      - poor connection
+      - i missed my hearing
+      - i missed my hearing due to bad connection
+      - i missed my hearing because i had poor connection
+      - i missed my hearing because i had no connection
+      - i missed my hearing because i could not connect to the internet
+      - i missed my hearing because i could not connect
+      - i missed my hearing because i lost connection
+      - i missed my hearing because i lost connection to the internet
+      - i could not make my hearing
+      - i could not make my hearing due to bad internet connection
+      - i could not make my hearing because i had poor internet connection
+      - i could not make my hearing because i had no internet connection
+      - i could not make my hearing due to bad connection
+      - i could not make my hearing because i had poor connection
+      - i could not make my hearing because i had no connection
+      - i can't make my hearing
+      - i can't connect
+      - i can't connect to the internet
+      - i can't connect to my hearing
+      - i can't connect to my hearing online
+      - i can't connect to the internet for my hearing
+      - i cannot connect to my hearing
+      - i cannot connect to the internet for my hearing
+      - i cannot connect to my hearing online
+      - i cannot make my hearing
+      - i did not make my hearing
+      - i did not make my hearing because of bad connection
+      - i did not make my hearing because of poor connection
+      - i did not make my hearing because of no connection
+      - i had no connection
+      - i had no connection to the internet
+      - i had no connection for my hearing
+      - i had no internet connection for my hearing
+      - i had no connection during my hearing
+      - i had no internet connection during my hearing
+      - i had bad connection
+      - i had bad internet connection
+      - i had bad connection for my hearing
+      - i had bad internet connection for my hearing
+      - i had bad connection during my hearing
+      - i had bad internet connection during my hearing
+      - i had poor connection
+      - i had poor internet connection
+      - i had poor connection for my hearing
+      - i had poor internet connection for my hearing
+      - i had poor connection during my hearing
+      - i had poor internet connection during my hearing
+      - i lost connection during my hearing
+      - i lost connection to the internet during my hearing
+      - i lost connection for my hearing
+      - i lost connection to the internet for my hearing
+      - i need help with my connection
+      - i need help with my internet connection
+      - i need help connecting to my hearing
+      - i need help with my internet connection for my hearing
+      - poor connection
+      - poor internet connection
+      - poor connection for my hearing
+      - poor internet connection for my hearing
+      - poor connection during my hearing
+      - poor internet connection during my hearing
+      - bad connection
+      - bad internet connection
+      - bad connection for my hearing
+      - bad internet connection for my hearing
+      - bad connection during my hearing
+      - bad internet connection during my hearing
+      - no connection
+      - no internet connection
+      - no connection for my hearing
+      - no internet connection for my hearing
+      - no connection during my hearing
+      - no internet connection during my hearing
+      - lost connection
+      - lost internet connection
+      - lost connection for my hearing
+      - lost internet connection for my hearing
+      - lost connection during my hearing
+      - lost internet connection during my hearing
+      - help me connect to my hearing
+      - help me connect to the internet for my hearing
+      - help me with my hearing connection
+      - what do i do if i cannot connect to my hearing
+      - what do i do if i cannot connect to the internet for my hearing
+      - what do i do if i lost connection during my hearing
+      - what do i do if i lost internet connection during my hearing
+      - what do i do if i have no connection
+      - what do i do if i have no internet connection
+      - what do i do if i have no connection for my hearing
+      - what do i do if i have no internet connection for my hearing
+      - what do i do if i have poor connection during my hearing
+      - what do i do if i have poor internet connection during my hearing
+      - what do i do if i missed my hearing
+
+  # CHITCHAT
+
+  - intent: chitchat/ask_name
+    examples: |
+      - what is courtie?
+      - what is courtney?
+      - your name?
+      - what is your name?
+      - may i know your name?
+      - what do people call you?
+      - do you have a name for yourself?
+      - who are you?
+      - who is courtney?
+      - what are you?
+      - introduce yourself
+
+  - intent: chitchat/ask_handoff
+    examples: |
+      - can i talk with a person?
+      - can i talk to a judge?
+      - connect me to court admin
+      - call court admin
+      - connect me to judge
+
+  - intent: chitchat/out_of_bound
+    examples: |
+      - what is time now?
+      - what is weather now?
+      - what is ai?
+      - what is chatbot?
+
+  - regex: case_number
+    examples: |
+      - \d+

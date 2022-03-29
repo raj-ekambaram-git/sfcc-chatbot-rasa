@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+  rasa:
+    build:
+      context: .
+      dockerfile: docker/core/Dockerfile
+    image: utcourtchatbotregistry.azurecr.io/utcourt-rasa-core:latest
+    container_name: rasa
+    ports:
+      - 5005:5005
+    command:
+      - run
+      - --enable-api
+      - --cors
+      - "*"
+  actions:
+    build:
+      context: .
+      dockerfile: docker/actions/Dockerfile
+    image: utcourtchatbotregistry.azurecr.io/utcourt-rasa-actions:latest
+    container_name: actions
+    expose: ["5055"]

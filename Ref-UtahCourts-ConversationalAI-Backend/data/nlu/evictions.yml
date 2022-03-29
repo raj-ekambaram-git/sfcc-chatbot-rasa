@@ -1,0 +1,344 @@
+version: "2.0"
+
+nlu:
+  - intent: evict
+    examples: |
+      - evict
+      - eviction
+      - eviction notice
+      - eviction papers
+      - eviction hearing
+      - eviction question
+      - eviction help
+      - eviction resources
+      - eviction rules
+      - eviction laws
+      - i need eviction resources
+      - i need eviction help
+      - i need eviction laws
+      - i need eviction rules
+      - help with my eviction
+      - help with my eviction notice
+      - help with my eviction papers
+      - help with my eviction hearing
+
+  - intent: evict_someone
+    examples: |
+      - evict someone
+      - evict my spouse
+      - evict my roommate
+      - evict my wife
+      - evict my husband
+      - evict my ex-husband
+      - evict my ex-wife
+      - evict my tenant
+      - evict my partner
+      - i need to evict someone
+      - i need to evict my roommate
+      - i need to evict my husband
+      - i need to evict my wife
+      - i need to evict my ex-husband
+      - i need to evict my ex-wife
+      - i need to evict my partner
+      - i need to evict a tenant
+      - i need to evict my spouse
+      - how do i evict someone
+      - how do i evict my spouse
+      - how do i evict my roommate
+      - how do i evict my partner
+      - how do i evict a tenant
+      - how do i evict my spouse from my apartment
+      - how do i evict someone from my apartment
+      - how do i evict my partner from my apartment
+      - how do i evict my roommate from my apartment
+      - how do i evict someone from my house
+      - how do i evict my spouse from my house
+      - how do i evict my roommate from my house
+      - how do i evict my partner
+      - help me evict someone
+      - help me evict my wife
+      - help me evict my husband
+      - help me evict my roommate
+      - help me evict my spouse
+      - help me evict a tenant
+      - can you help me evict someone
+      - can you help me evict my tenant
+      - can you help me evict my wife
+      - can you help me evict my husband
+      - can you help me evict my ex-husband
+      - can you help me evict my ex-wife
+      - can you help me evict my partner
+      - i am a landlord i need to evict my tenant
+      - i need an eviction notice
+      - i need an eviction notice for my tenant
+      - i need an eviction notice for my spouse
+      - i need an eviction notice for my roommate
+      - i need an eviction notice for my partner
+      - i need an eviction notice for my husband
+      - i need an eviction notice fot my wife
+      - i need to remove my tenant with an eviction notice
+      - how do i inform a tenet of eviction
+      - how do i inform my spouse of eviction
+      - how do i inform my roommate of eviction
+      - how do i inform my partner of eviction
+      - how do i inform my husband of eviction
+      - how do i inform my wife of eviction
+      - how do i get an eviction notice for my tenant
+      - how do i use an eviction notice
+      - how do i find the right eviction notice
+      - find eviction notice
+      - find eviction notice for my tenant
+      - find eviction notice for my spouse
+      - find eviction notice for my husband
+      - find eviction notice for my wife
+      - find eviction notice for my roommate
+      - find eviction notice for my partner
+      - what eviction notice do i use
+      - what eviction notice do i need
+      - what eviction notice do i need to remove a tenant
+      - what do i include in my eviction notice
+      - i do not feel safe and need someone evicted
+      - i do not feel safe and need my partner evicted
+      - i do not feel safe and need my husband evicted
+      - i do not feel safe and need my wife evicted
+      - i do not feel safe and need my spouse evicted
+      - i do not feel safe and need my roommate evicted
+      - i feel threatened and need my husband evicted
+      - i feel threatened and need my wife evicted
+      - i feel threatened and need my partner evicted
+      - i feel threatened and need my spouse evicted
+      - i feel threatened and need my tenant evicted
+      - i feel threatened and need my roommate evicted
+      - i feel threatened and need someone evicted
+      - we are separated but he keeps coming in
+      - we are separated but she keeps coming in
+
+  - intent: process_eviction
+    examples: |
+      - received eviction
+      - received eviction notice
+      - received eviction papers
+      - eviction notice from landlord
+      - eviction notice from spouse
+      - eviction notice from partner
+      - eviction notice from husband
+      - eviction notice from wife
+      - i got an eviction
+      - i got an eviction notice
+      - i got eviction papers
+      - i got an eviction notice from my landlord
+      - i got an eviction notice from my roommate
+      - i got an eviction notice from my spouse
+      - i got an eviction notice from my partner
+      - i got an eviction notice from my husband
+      - i got an eviction notice from my wife
+      - i got eviction papers from my landlord
+      - i got eviction papers from my roommate
+      - i got eviction papers from my spouse
+      - i got eviction papers from my partner
+      - i got eviction papers from my husband
+      - i got eviction papers from my wife
+      - i received an eviction
+      - i received an eviction notice
+      - i received eviction papers
+      - i received eviction papers from my landlord
+      - i received eviction papers from my spouse
+      - i received eviction papers from my partner
+      - i received eviction papers from my roommate
+      - i received eviction papers from my husband
+      - i received eviction papers from my wife
+      - i received an eviction notice from my landlord
+      - i received an eviction notice from spouse
+      - i received an eviction notice from my partner
+      - i received an eviction notice from my roommate
+      - i received an eviction notice from my husband
+      - i received an eviction notice from my wife
+      - i received an eviction for withholding rent
+      - i received an eviction but the housing conditions were bad
+      - i received an eviction but there was mold
+      - i received an eviction but repairs were never made
+      - my landlord gave me an eviction notice
+      - my roommate gave me an eviction notice
+      - my partner gave me an eviction notice
+      - my spouse gave me an eviction notice
+      - my wife gave me an eviction notice
+      - my husband gave me an eviction notice
+      - my landlord gave me eviction papers
+      - my roommate gave me eviction papers
+      - my partner gave me eviction papers
+      - my spouse gave me eviction papers
+      - my husband gave me eviction papers
+      - my wife gave me eviction papers
+      - how do i file a response for eviction
+      - how do i answer eviction papers
+      - how do i answer an eviction notice
+      - how do i file eviction papers
+      - how do i file an eviction notice
+      - how do i respond to an eviction notice
+      - how do i respond to eviction papers
+      - how do i respond after receiving an eviction notice from my landlord
+      - how do i respond after receiving an eviction notice from my partner
+      - how do i respond after receiving an eviction notice from my spouse
+      - how do i respond after receiving an eviction notice from my roommate
+      - how do i respond after receiving an eviction notice from my husband
+      - how do i respond after receiving an eviction notice from my wife
+      - how do i respond after receiving eviction notice papers from my landlord
+      - how do i respond after receiving eviction notice papers from my partner
+      - how do i respond after receiving eviction notice papers from my spouse
+      - how do i respond after receiving eviction notice papers from my husband
+      - how do i respond after receiving eviction notice papers from my wife
+      - what do i do with eviction papers
+      - what do i do with an eviction notice
+      - what do i do when i receive an eviction
+      - what do i do when i receive an eviction notice
+      - what do i do when i receive eviction papers
+      - what do i do when my partner evicts me
+      - what do i do when my landlord evicts me
+      - what do i do when my roommate evicts me
+      - what do i do when my husband evicts me
+      - what do i do when my wife evicts me
+
+  - intent: retrieve_belongings
+    examples: |
+      - belongings
+      - i need my belongings back
+      - i need my possessions back
+      - i need my property back
+      - i need my things back
+      - i need my stuff back
+      - i never received my belongings
+      - i never received my possessions
+      - i never received my property
+      - i never received my things
+      - i never received my stuff
+      - i never got my belongings back
+      - i never got my possessions back
+      - i never got my property back
+      - i never got my things back
+      - i never got my stuff back
+      - how do i retrieve my belongings
+      - how do i retrieve my possessions
+      - how do i retrieve my property
+      - how do i retrieve my things
+      - how do i retrieve my stuff
+      - help me get my belongings back
+      - help me get my possessions back
+      - help me get my property back
+      - help me get my things back
+      - help me get my stuff back
+      - my landlord never returned my belongings
+      - my landlord never returned my possessions
+      - my landlord never returned my property
+      - my landlord never returned my things
+      - my landlord never returned my stuff
+      - my landlord never gave me my belongings back
+      - my landlord never gave me my possessions back
+      - my landlord never gave me my property back
+      - my landlord never gave me my things back
+      - my landlord never gave me my stuff back
+      - i was evicted and never got my belongings back
+      - i was evicted and never got my possessions back
+      - i was evicted and never got my property back
+      - i was evicted and never got my things back
+      - i was evicted and never got my stuff back
+      - i was evicted and my belongings were never returned
+      - i was evicted and my possessions were never returned
+      - i was evicted and my property was never returned
+      - i was evicted and my things were never returned
+      - i was evicted and my stuff was never returned
+
+  - intent: handle_rent_rejection
+    examples: |
+      - rent not accepted
+      - rent never accepted
+      - rent isn't being accepted
+      - rent won't be accepted
+      - rent wasn't accepted
+      - my rent wasn't accepted
+      - my rent was never accepted
+      - my rent hasn't been accepted
+      - my rent isn't being accepted
+      - my rent hasn't been accepted by my landlord
+      - my rent wasn't accepted by my landlord
+      - my rent is not being accepted by my landlord
+      - my rent was never accepted by my landlord
+      - my rent won't be accepted by my landlord
+      - my landlord did not accept my rent
+      - my landlord never accepted my rent
+      - my landlord wouldn't accept my rent
+      - my landlord hasn't accepted my rent
+      - my landlord isn't accepting my rent
+      - my landlord won't accept my rent
+      - my landlord is refusing to accept my rent
+      - what do i do if my rent is not accepted
+      - what do i do if if my rent was not accepted
+      - what do i do if my rent will not be accepted
+      - what do i do if my rent was never accepted
+      - what do i do if my rent is never accepted
+      - what do i do if my rent is not accepted by my landlord
+      - what do i do if if my rent was not accepted by my landlord
+      - what do i do if my rent will not be accepted by my landlord
+      - what do i do if my rent was never accepted by my landlord
+      - what do i do if my rent is never accepted by my landlord
+
+  - intent: retrieve_deposit
+    examples: |
+      - deposit
+      - rental deposit
+      - security deposit
+      - i never received my deposit
+      - i never received my rental deposit
+      - i never received my security deposit
+      - i never got my deposit back
+      - i never got my rental deposit back
+      - i never got my security deposit back
+      - i was never given my deposit back
+      - i was never given my rental deposit back
+      - i was never given my security deposit back
+      - how do i get my deposit back
+      - how do i get my rental deposit back
+      - how do i get my security deposit back
+      - how do i get my deposit back from my landlord
+      - how do i get my rental deposit back from my landlord
+      - how do i get my security deposit back from my landlord
+      - help get my deposit back
+      - help get my rental deposit back
+      - help get my security deposit back
+      - help get my deposit back from my landlord
+      - help get my rental deposit back from my landlord
+      - help get my security deposit back from my landlord
+      - my landlord never gave me my deposit back
+      - my landlord never gave me my rental deposit back
+      - my landlord never gave me my security deposit back
+      - my landlord hasn’t given me my deposit back
+      - my landlord hasn’t given me my rental deposit back
+      - my landlord hasn’t given me my security deposit back
+      - my landlord won't give me my deposit back
+      - my landlord won't give me my rental deposit back
+      - my landlord won't give me my security deposit back
+
+  - intent: evict_commercial_tenant
+    examples: |
+      - commercial tenant
+      - commercial tenant eviction
+      - commercial tenant removal
+      - evicting commercial tenants
+      - removing commercial tenants
+      - commercial tenant laws
+      - commercial tenant rules
+      - how do i evict a commercial tenant
+      - how do i remove a commercial tenant
+      - how do i evict a commercial tenant using ocap
+      - how do i remove a commercial tenant using ocap
+      - i need to evict a commercial tenant
+      - i need to remove a commercial tenant
+      - help me evict a commercial tenant
+      - help me remove a commercial tenant
+      - can i evict a commercial tenant
+      - can i remove a commercial tenant
+      - can i use ocap to evict a commercial tenant
+      - can i use ocap to remove a commercial tenant
+      - i am a landlord, i need to evict a commercial tenant
+      - i am a landlord, i need to remove a commercial tenant
+      - i am a landlord, can i use ocap to evict a commercial tenant
+      - i am a landlord, can i use ocap to remove a commercial tenant

@@ -1,0 +1,440 @@
+openapi: 3.0.3
+info:
+  title: UTCourts API
+  description: This is an UTCourts API service documentation.
+  termsOfService: https://smartbear.com/terms-of-use/
+  contact:
+    name: Shiva Perumalsamy
+    email: Sivanandham.Perumalsamy@siriuscom.com
+  version: 1.0.0
+servers:
+  - url: https://testws.utcourts.gov/UTCourtsAPI
+paths:
+  /authenticate:
+    post:
+      tags:
+        - Authentication
+      summary: Authenticates Interview users
+      operationId: authenticate
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AuthenticationRequest"
+        required: true
+      responses:
+        200:
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/AuthenticationResponse"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+  /cases:
+    get:
+      tags:
+        - MyCase
+      summary: Fetches the available cases for the user
+      operationId: getAvailableCases
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationParam"
+      responses:
+        200:
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CaseResponse"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+  /cases/{caseNumber}:
+    get:
+      tags:
+        - MyCase
+      summary: Fetches the available cases for the user for given case number
+      operationId: getCaseByCaseNumber
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationParam"
+        - $ref: "#/components/parameters/CaseNumberParam"
+        - in: query
+          name: courtType
+          required: false
+          schema:
+            type: string
+        - in: query
+          name: locationCode
+          required: false
+          schema:
+            type: string
+      responses:
+        200:
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CaseResponse"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+  /cases/{caseNumber}/charges:
+    get:
+      tags:
+        - MyCase
+      summary: Fetches the available charges for the user for given case number
+      operationId: getCharges
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationParam"
+        - $ref: "#/components/parameters/CaseNumberParam"
+        - $ref: "#/components/parameters/CourtTypeParam"
+        - $ref: "#/components/parameters/LocationCodeParam"
+      responses:
+        200:
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ChargeResponse"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+  /cases/{caseNumber}/history:
+    get:
+      tags:
+        - MyCase
+      summary: Fetches the case history URL for the given case number
+      operationId: getCaseHistory
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationParam"
+        - $ref: "#/components/parameters/CaseNumberParam"
+        - $ref: "#/components/parameters/CourtTypeParam"
+        - $ref: "#/components/parameters/LocationCodeParam"
+      responses:
+        200:
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CaseHistoryResponse"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+  /cases/{caseNumber}/parties:
+    get:
+      tags:
+        - MyCase
+      summary: Fetches party information for the given case number
+      operationId: getParties
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationParam"
+        - $ref: "#/components/parameters/CaseNumberParam"
+        - $ref: "#/components/parameters/CourtTypeParam"
+        - $ref: "#/components/parameters/LocationCodeParam"
+      responses:
+        200:
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PartyResponse"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+  /cases/{caseNumber}/payment:
+    get:
+      tags:
+        - MyCase
+      summary: Fetches payment information for the given case number
+      operationId: getPaymentInformation
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationParam"
+        - $ref: "#/components/parameters/CaseNumberParam"
+        - $ref: "#/components/parameters/CourtTypeParam"
+        - $ref: "#/components/parameters/LocationCodeParam"
+      responses:
+        200:
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/PaymentResponse"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+  /cases/{caseNumber}/edoc-upload-urls:
+    get:
+      tags:
+        - MyCase
+      summary: Fetches e-document upload URLs
+      operationId: getDocumentUploadUrls
+      parameters:
+        - $ref: "#/components/parameters/AuthorizationParam"
+        - $ref: "#/components/parameters/CaseNumberParam"
+        - $ref: "#/components/parameters/CourtTypeParam"
+        - $ref: "#/components/parameters/LocationCodeParam"
+      responses:
+        200:
+          description: 200 OK
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/DocumentUploadResponse"
+        400:
+          $ref: "#/components/responses/BadRequest"
+        404:
+          $ref: "#/components/responses/NotFound"
+        500:
+          $ref: "#/components/responses/InternalServerError"
+components:
+  parameters:
+    AuthorizationParam:
+      in: header
+      name: Authorization
+      required: true
+      schema:
+        type: string
+    CaseNumberParam:
+      in: path
+      name: caseNumber
+      required: true
+      schema:
+        type: string
+    CourtTypeParam:
+      in: query
+      name: courtType
+      required: true
+      schema:
+        type: string
+    LocationCodeParam:
+      in: query
+      name: locationCode
+      required: true
+      schema:
+        type: string
+  responses:
+    BadRequest:
+      description: 400 BAD REQUEST
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    NotFound:
+      description: 404 NOT FOUND
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+    InternalServerError:
+      description: 500 INTERNAL SERVER ERROR
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/ErrorResponse"
+  schemas:
+    AuthenticationRequest:
+      required:
+        - token
+      type: object
+      properties:
+        token:
+          type: string
+        dev:
+          type: boolean
+    AuthenticationResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessResponse"
+        - type: object
+          properties:
+            accessToken:
+              type: string
+    SuccessResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: true
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+          default: false
+        error:
+          $ref: "#/components/schemas/Error"
+        statusCode:
+          type: integer
+    Error:
+      type: object
+      properties:
+        code:
+          type: string
+        message:
+          type: string
+    CaseResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessResponse"
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: "#/components/schemas/CaseInformation"
+    ChargeResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessResponse"
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: "#/components/schemas/ChargeInformation"
+    CaseHistoryResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessResponse"
+        - type: object
+          properties:
+            data:
+              type: object
+              properties:
+                url:
+                  type: string
+    PartyResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessResponse"
+        - type: object
+          properties:
+            data:
+              type: array
+              items:
+                $ref: "#/components/schemas/PartyInformation"
+    PaymentResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessResponse"
+        - type: object
+          properties:
+            data:
+              $ref: "#/components/schemas/PaymentInformation"
+    DocumentUploadResponse:
+      allOf:
+        - $ref: "#/components/schemas/SuccessResponse"
+        - type: object
+          properties:
+            data:
+              $ref: "#/components/schemas/DocumentUploadInformation"
+    CaseInformation:
+      type: object
+      properties:
+        caseNumber:
+          type: string
+          nullable: true
+        caseTitle:
+          type: string
+          nullable: true
+        courtType:
+          type: string
+          nullable: true
+        locationCode:
+          type: string
+          nullable: true
+        nextHearingDate:
+          type: string
+          nullable: true
+          pattern: '^\d{2}/\d{2}/\d{4}'
+        caseSecurity:
+          type: string
+          nullable: true
+        courtName:
+          type: string
+          nullable: true
+        location:
+          $ref: "#/components/schemas/locationInformation"
+    locationInformation:
+      type: object
+      properties:
+        city:
+          type: string
+          nullable: true
+        county:
+          type: string
+          nullable: true
+        district:
+          type: string
+          nullable: true
+    ChargeInformation:
+      type: object
+      properties:
+        sequence:
+          type: string
+          nullable: false
+        offense:
+          type: string
+          nullable: true
+        severity:
+          type: string
+          nullable: true
+        violationDate:
+          type: string
+          nullable: true
+          pattern: '^\d{2}/\d{2}/\d{4}'
+    PartyInformation:
+      type: object
+      properties:
+        type:
+          type: string
+          nullable: false
+        party:
+          type: string
+          nullable: false
+        representedBy:
+          type: string
+          nullable: true
+    PaymentInformation:
+      type: object
+      properties:
+        intCaseNumber:
+          type: string
+          nullable: false
+        courtType:
+          type: string
+          nullable: false
+        epayWebUser:
+          type: string
+          nullable: false
+        epayAmount:
+          type: string
+          nullable: false
+        epayParty:
+          type: string
+          nullable: false
+    DocumentUploadInformation:
+      type: object
+      properties:
+        fillOutFormUrl:
+          type: string
+          nullable: true
+        guidedInterviewUrl:
+          type: string
+          nullable: true
